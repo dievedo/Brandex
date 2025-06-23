@@ -1,1 +1,383 @@
-# Brandex
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de Alianza de Crecimiento: Brandex + Creace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Creace Logo Inspired (Navy & Orange) -->
+    <!-- Application Structure Plan: Se ha diseñado una aplicación de página única con desplazamiento vertical temático. Comienza con una sección de impacto (Hero) que resume el objetivo. Sigue con secciones dedicadas que explican el objetivo con contadores dinámicos, la solución estratégica mediante pestañas interactivas (ahora enfocada en e-commerce), el modelo de alianza con una línea de tiempo visual y costos detallados, y proyecciones financieras con un gráfico interactivo. Esta estructura fue elegida para transformar un informe lineal en una experiencia narrativa y atractiva, facilitando la comprensión de la nueva estrategia de ventas digitales. -->
+    <!-- Visualization & Content Choices: 1. Objetivo ($1B -> $2B): Contadores numéricos animados (JS) para impacto visual. 2. Estrategia: Pestañas interactivas (HTML/JS) reorganizadas para e-commerce (Actualización Web, Landing de Venta, Tráfico, Influencia). 3. Modelo de Alianza: Diagrama de proceso (HTML/Tailwind) con 3 fases, ahora detallando los costos de desarrollo web en la Fase 1. 4. Proyecciones: Gráfico de barras apiladas (Chart.js) para mostrar la "venta incremental" (ahora digital). Todas las elecciones evitan SVG/Mermaid, priorizando la claridad y el enfoque en la nueva propuesta de valor. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7F8FA; /* Light gray background */
+            color: #1A202C; /* Darker text */
+        }
+        .primary-color { color: #1E3A5F; } /* Navy Blue from Logo */
+        .primary-bg { background-color: #1E3A5F; }
+        .primary-border { border-color: #1E3A5F; }
+
+        .accent-color { color: #D95829; } /* Orange from Logo */
+        .accent-bg { background-color: #D95829; }
+        .accent-border { border-color: #D95829; }
+        
+        .secondary-bg { background-color: #E2E8F0; } /* Light blue-gray */
+        .secondary-text { color: #4A5568; } /* Medium gray text */
+
+        .gradient-text {
+            background: linear-gradient(90deg, #1E3A5F, #3A5F8A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .tab-active {
+            border-color: #1E3A5F;
+            background-color: #E2E8F0;
+            color: #1E3A5F;
+            font-weight: 700;
+        }
+        .tab-inactive {
+            border-color: transparent;
+            color: #4A5568;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div>
+                <!-- Logo -->
+                <img src="https://i.imgur.com/i5A9A7A.png" alt="Logo de Creace" class="h-12" onerror="this.onerror=null;this.src='https://placehold.co/170x45/FFFFFF/1E3A5F?text=CreAce&font=inter';">
+            </div>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#objetivo" class="secondary-text hover:primary-color transition-colors">El Objetivo</a>
+                <a href="#solucion" class="secondary-text hover:primary-color transition-colors">Nuestra Solución</a>
+                <a href="#alianza" class="secondary-text hover:primary-color transition-colors">La Alianza</a>
+                <a href="#proyecciones" class="secondary-text hover:primary-color transition-colors">Proyecciones</a>
+                <a href="#siguientes-pasos" class="primary-bg text-white px-4 py-2 rounded-lg hover:opacity-90 transition-colors">Siguientes Pasos</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-3">
+             <a href="#objetivo" class="block py-2 secondary-text hover:primary-color">El Objetivo</a>
+             <a href="#solucion" class="block py-2 secondary-text hover:primary-color">Nuestra Solución</a>
+             <a href="#alianza" class="block py-2 secondary-text hover:primary-color">La Alianza</a>
+             <a href="#proyecciones" class="block py-2 secondary-text hover:primary-color">Proyecciones</a>
+             <a href="#siguientes-pasos" class="block mt-2 text-center primary-bg text-white px-4 py-2 rounded-lg hover:opacity-90">Siguientes Pasos</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <!-- Hero Section -->
+        <section class="text-center py-16 md:py-24">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
+                <span class="gradient-text">Llevando a Brandex a los $2.000 Millones</span>
+            </h1>
+            <p class="max-w-3xl mx-auto text-lg md:text-xl secondary-text mb-8">
+                Una propuesta de alianza estratégica para duplicar su facturación a través de un motor de crecimiento digital preciso, medible y rentable, centrado en ventas online.
+            </p>
+            <a href="#objetivo" class="primary-bg text-white px-8 py-4 rounded-lg text-lg font-bold hover:opacity-90 transition-opacity transform hover:scale-105">
+                Descubrir la Estrategia
+            </a>
+        </section>
+
+        <!-- El Objetivo -->
+        <section id="objetivo" class="py-16 md:py-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">El Objetivo: Un Salto Cuántico en Ventas</h2>
+                <p class="max-w-2xl mx-auto secondary-text">
+                El plan no es un crecimiento incremental, sino duplicar el impacto de Brandex en el mercado. Pasaremos de una base sólida a una posición de liderazgo dominante, impulsada por la demanda y la conversión digital.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <h3 class="text-xl font-bold secondary-text mb-2">Ventas Actuales Anuales</h3>
+                    <p class="text-5xl md:text-6xl font-extrabold primary-color">
+                        $<span class="counter" data-target="1000">0</span> M
+                    </p>
+                     <p class="mt-4 text-gray-500">Una base sólida construida con una fuerza de ventas tradicional admirable.</p>
+                </div>
+                <div class="primary-bg text-white p-8 rounded-2xl shadow-xl text-center transform md:scale-105">
+                     <h3 class="text-xl font-bold text-gray-200 mb-2">Meta de Ventas Anuales</h3>
+                    <p class="text-5xl md:text-6xl font-extrabold text-white">
+                        $<span class="counter" data-target="2000">0</span> M
+                    </p>
+                    <p class="mt-4 text-gray-300">El objetivo alcanzable con una alianza de crecimiento digital enfocada en ventas directas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nuestra Solución -->
+        <section id="solucion" class="py-16 md:py-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Nuestra Solución: El Motor de Ventas Digital Directo</h2>
+                <p class="max-w-3xl mx-auto secondary-text">
+                Reorientamos la estrategia para construir un ecosistema de e-commerce robusto. El objetivo es convertir el interés digital directamente en compras online a través de su propia plataforma, empezando con **Ututuy Colágeno Líquido** como producto estrella.
+                </p>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row border-b-2 primary-border mb-6">
+                    <button class="tab-button flex-1 py-3 px-4 text-lg border-b-4 transition-all tab-active" data-tab="1">1. Actualización Web</button>
+                    <button class="tab-button flex-1 py-3 px-4 text-lg border-b-4 transition-all tab-inactive" data-tab="2">2. Landing de Venta</button>
+                    <button class="tab-button flex-1 py-3 px-4 text-lg border-b-4 transition-all tab-inactive" data-tab="3">3. Motores de Tráfico</button>
+                    <button class="tab-button flex-1 py-3 px-4 text-lg border-b-4 transition-all tab-inactive" data-tab="4">4. Influencia</button>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <div id="tab-content-1" class="tab-content">
+                        <h3 class="text-2xl font-bold primary-color mb-4">Evolución del Sitio Web Brandex</h3>
+                        <p class="text-lg secondary-text">Para soportar ventas directas, es crucial actualizar y evolucionar el sitio web actual de Brandex. Lo prepararemos para integrar funcionalidades de e-commerce, asegurando una experiencia de usuario fluida, segura y profesional que genere confianza y facilite la compra.</p>
+                    </div>
+                    <div id="tab-content-2" class="tab-content hidden">
+                        <h3 class="text-2xl font-bold primary-color mb-4">Landing Page de Conversión E-commerce</h3>
+                        <p class="text-lg secondary-text">Crearemos una página de destino específica para Ututuy, diseñada como una máquina de ventas. El **Call to Action** será un claro y directo **"Comprar Ahora"**, guiando al cliente de manera intuitiva a través de un proceso de pago optimizado para minimizar la fricción y maximizar las conversiones.</p>
+                    </div>
+                    <div id="tab-content-3" class="tab-content hidden">
+                        <h3 class="text-2xl font-bold primary-color mb-4">Google & Meta Ads</h3>
+                        <p class="text-lg secondary-text">Implementaremos una estrategia de doble motor. Con **Google Ads**, capturaremos la demanda de usuarios que buscan activamente comprar colágeno. Con **Meta Ads** (Instagram/Facebook), crearemos deseo de compra en audiencias segmentadas, llevando tráfico calificado directamente a la landing page de venta.</p>
+                    </div>
+                    <div id="tab-content-4" class="tab-content hidden">
+                        <h3 class="text-2xl font-bold primary-color mb-4">Marketing de Influencia</h3>
+                        <p class="text-lg secondary-text">Colaboraremos con micro-influenciadores para generar contenido auténtico. Esto construye prueba social y confianza, posicionando a Ututuy como un producto recomendado y dirigiendo a sus seguidores directamente al botón de compra en la nueva landing page.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- La Alianza -->
+        <section id="alianza" class="py-16 md:py-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">La Alianza de Crecimiento: Inversión y Resultados</h2>
+                 <p class="max-w-3xl mx-auto secondary-text">
+                Nuestro modelo es transparente y se enfoca en el retorno. La inversión inicial sienta las bases para la infraestructura de ventas online, y nuestra compensación continua está ligada directamente a los resultados que generamos.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-4 md:gap-8 text-center">
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border-t-4 accent-border">
+                    <div class="text-3xl font-extrabold accent-color mb-4">Fase 1</div>
+                    <h3 class="text-xl font-bold mb-2">Fundación E-commerce</h3>
+                    <p class="secondary-text">Una inversión única para construir su motor de ventas online:</p>
+                    <ul class="text-left mt-4 space-y-2">
+                       <li><b class="primary-color">Actualización Web Brandex:</b> $3.000.000</li>
+                       <li><b class="primary-color">Creación Landing Page de Venta:</b> $2.500.000</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border-t-4 accent-border">
+                    <div class="text-3xl font-extrabold accent-color mb-4">Fase 2</div>
+                    <h3 class="text-xl font-bold mb-2">Piloto y Gestión</h3>
+                    <p class="secondary-text">Lanzamiento y optimización con un <b class="primary-color">fee de gestión de $4.000.000 COP mensuales</b> + la inversión en pauta publicitaria. Nos enfocamos en maximizar el retorno inicial.</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border-t-4 accent-border">
+                    <div class="text-3xl font-extrabold accent-color mb-4">Fase 3</div>
+                    <h3 class="text-xl font-bold mb-2">Escalamiento y Éxito</h3>
+                    <p class="secondary-text">El modelo de alianza total. Activamos una <b class="primary-color">comisión por éxito del 5%</b> sobre la **venta incremental digital** generada, con un fee de gestión reducido.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proyecciones -->
+        <section id="proyecciones" class="py-16 md:py-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Visualizando el Crecimiento: La Venta Incremental Digital</h2>
+                 <p class="max-w-3xl mx-auto secondary-text">
+                Nuestra métrica estrella es la "venta incremental": toda facturación digital que supere su línea base de ventas online actual. Este gráfico ilustra cómo construiremos su nuevo canal de ingresos directos.
+                </p>
+            </div>
+            <div class="bg-white p-4 md:p-8 rounded-2xl shadow-lg">
+                <div class="chart-container">
+                    <canvas id="salesChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Siguientes Pasos -->
+        <section id="siguientes-pasos" class="py-16 md:py-24 secondary-bg rounded-2xl">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Siguientes Pasos</h2>
+                <p class="max-w-2xl mx-auto secondary-text mb-8">
+                Creemos firmemente en el potencial de Brandex para construir un canal de ventas digital robusto y rentable. Estamos listos para ser sus socios en este crecimiento.
+                </p>
+                <div class="bg-white max-w-2xl mx-auto p-8 rounded-xl shadow-md">
+                     <p class="text-lg font-semibold mb-6">Proponemos una reunión de 30 minutos para:</p>
+                     <ul class="text-left space-y-3 list-none">
+                        <li class="flex items-start"><span class="primary-color font-bold text-xl mr-3">✓</span>Presentar en detalle el plan de desarrollo web y de marketing.</li>
+                        <li class="flex items-start"><span class="primary-color font-bold text-xl mr-3">✓</span>Validar la estructura de costos y el modelo de alianza.</li>
+                        <li class="flex items-start"><span class="primary-color font-bold text-xl mr-3">✓</span>Establecer un cronograma para el lanzamiento de la Fase 1.</li>
+                     </ul>
+                </div>
+                 <p class="mt-8 font-bold text-lg primary-color">El Equipo de Creace - Tu Socio en Crecimiento Digital</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="text-center py-6">
+        <p class="secondary-text text-sm">&copy; 2025 Creace. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Counters
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200; 
+
+            const animateCounter = (counter) => {
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                
+                const updateCount = () => {
+                    const inc = target / speed;
+                    if (count < target) {
+                        count += inc;
+                        counter.innerText = Math.ceil(count);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            };
+            
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+
+            // Tabs
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('tab-active');
+                        btn.classList.add('tab-inactive');
+                    });
+                    button.classList.add('tab-active');
+                    button.classList.remove('tab-inactive');
+
+                    tabContents.forEach(content => {
+                        if (content.id === `tab-content-${tabId}`) {
+                            content.classList.remove('hidden');
+                        } else {
+                            content.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            // Sales Chart
+            const ctx = document.getElementById('salesChart').getContext('2d');
+            const salesChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Mes 5', 'Mes 6', 'Mes 7', 'Mes 8', 'Mes 9', 'Mes 10'],
+                    datasets: [{
+                        label: 'Línea Base de Ventas Digitales',
+                        data: [5, 5, 5, 5, 5, 5],
+                        backgroundColor: '#E2E8F0', // secondary-bg
+                        borderColor: '#A0AEC0',
+                        borderWidth: 1
+                    }, {
+                        label: 'Venta Incremental Digital (Proyectada)',
+                        data: [15, 25, 40, 55, 70, 83],
+                        backgroundColor: '#D95829', // accent-color
+                        borderColor: '#C05621',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Proyección de Ventas Digitales Mensuales (en Millones de COP)',
+                            color: '#1A202C',
+                            font: { size: 16 },
+                            padding: { top: 10, bottom: 20 }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 }).format(context.parsed.y * 1000000);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            stacked: true,
+                            grid: { display: false },
+                            ticks: { color: '#4A5568' }
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true,
+                            grid: { color: '#E2E8F0' },
+                            title: {
+                                display: true,
+                                text: 'Ventas (Millones de COP)',
+                                color: '#4A5568'
+                            },
+                             ticks: {
+                                color: '#4A5568',
+                                callback: function(value, index, ticks) {
+                                    return '$' + value + ' M';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
