@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Creace Logo Inspired (Navy & Orange) -->
-    <!-- Application Structure Plan: Se ha diseñado una aplicación de página única con desplazamiento vertical temático. Comienza con una sección de impacto (Hero) que resume el objetivo. Sigue con secciones dedicadas que explican el objetivo con contadores dinámicos, la solución estratégica mediante pestañas interactivas, el modelo de alianza con una línea de tiempo visual, y proyecciones financieras con un gráfico interactivo. Esta estructura fue elegida para transformar un informe lineal en una experiencia narrativa y atractiva, permitiendo a los directivos de Brandex digerir información compleja en bloques manejables y visualmente impactantes, facilitando la comprensión y la toma de decisiones. -->
-    <!-- Visualization & Content Choices: 1. Objetivo ($1B -> $2B): Contadores numéricos animados (JS) para un impacto visual inmediato. 2. Estrategia: Pestañas interactivas (HTML/JS) para organizar y presentar las 4 tácticas de forma clara y sin abrumar. 3. Modelo de Alianza: Diagrama de proceso con 3 fases (HTML/Tailwind) para visualizar la línea de tiempo de la inversión. 4. Proyecciones: Gráfico de barras apiladas (Chart.js) para mostrar la "venta incremental" de forma tangible e interactiva. Todas las elecciones evitan SVG/Mermaid, priorizando la claridad, la interacción y el profesionalismo requerido para una propuesta de negocios. -->
+    <!-- Application Structure Plan: Se ha diseñado una aplicación de página única con desplazamiento vertical temático. Comienza con una sección de impacto (Hero) que resume el objetivo. Sigue con secciones dedicadas que explican el objetivo con contadores dinámicos, la solución estratégica mediante pestañas interactivas (ahora enfocada en e-commerce), el modelo de alianza con una línea de tiempo visual y costos detallados, y proyecciones financieras con un gráfico interactivo. Esta estructura fue elegida para transformar un informe lineal en una experiencia narrativa y atractiva, facilitando la comprensión de la nueva estrategia de ventas digitales. -->
+    <!-- Visualization & Content Choices: 1. Objetivo ($1B -> $2B): Contadores numéricos animados (JS) para impacto visual. 2. Estrategia: Pestañas interactivas (HTML/JS) reorganizadas para e-commerce (Actualización Web, Landing de Venta, Tráfico, Influencia). 3. Modelo de Alianza: Diagrama de proceso (HTML/Tailwind) con 3 fases, ahora detallando los costos de desarrollo web en la Fase 1. 4. Proyecciones: Gráfico de barras apiladas (Chart.js) para mostrar la "venta incremental" (ahora digital). Todas las elecciones evitan SVG/Mermaid, priorizando la claridad y el enfoque en la nueva propuesta de valor. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
@@ -99,7 +99,7 @@
                 <span class="gradient-text">Llevando a Brandex a los $2.000 Millones</span>
             </h1>
             <p class="max-w-3xl mx-auto text-lg md:text-xl secondary-text mb-8">
-                Una propuesta de alianza estratégica para duplicar su facturación a través de un motor de crecimiento digital preciso, medible y rentable.
+                Una propuesta de alianza estratégica para duplicar su facturación a través de un motor de crecimiento digital preciso, medible y rentable, centrado en ventas online.
             </p>
             <a href="#objetivo" class="primary-bg text-white px-8 py-4 rounded-lg text-lg font-bold hover:opacity-90 transition-opacity transform hover:scale-105">
                 Descubrir la Estrategia
@@ -111,7 +111,7 @@
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold mb-2">El Objetivo: Un Salto Cuántico en Ventas</h2>
                 <p class="max-w-2xl mx-auto secondary-text">
-                El plan no es un crecimiento incremental, sino duplicar el impacto de Brandex en el mercado. Pasaremos de una base sólida a una posición de liderazgo dominante, impulsada por la demanda digital.
+                El plan no es un crecimiento incremental, sino duplicar el impacto de Brandex en el mercado. Pasaremos de una base sólida a una posición de liderazgo dominante, impulsada por la demanda y la conversión digital.
                 </p>
             </div>
             <div class="grid md:grid-cols-2 gap-8 items-center">
@@ -127,7 +127,7 @@
                     <p class="text-5xl md:text-6xl font-extrabold text-white">
                         $<span class="counter" data-target="2000">0</span> M
                     </p>
-                    <p class="mt-4 text-gray-300">El objetivo alcanzable con una alianza de crecimiento digital enfocada en resultados.</p>
+                    <p class="mt-4 text-gray-300">El objetivo alcanzable con una alianza de crecimiento digital enfocada en ventas directas.</p>
                 </div>
             </div>
         </section>
@@ -135,34 +135,34 @@
         <!-- Nuestra Solución -->
         <section id="solucion" class="py-16 md:py-24">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-2">Nuestra Solución: La Estrategia "Demanda Digital, Venta Física"</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Nuestra Solución: El Motor de Ventas Digital Directo</h2>
                 <p class="max-w-3xl mx-auto secondary-text">
-                En lugar de simplemente hacer publicidad, construiremos un ecosistema digital completo. Su propósito es generar un deseo tan fuerte por sus productos que los consumidores los busquen activamente en las droguerías. Nos enfocaremos en su producto de alto potencial, **Ututuy Colágeno Líquido**, como punta de lanza.
+                Reorientamos la estrategia para construir un ecosistema de e-commerce robusto. El objetivo es convertir el interés digital directamente en compras online a través de su propia plataforma, empezando con **Ututuy Colágeno Líquido** como producto estrella.
                 </p>
             </div>
             <div class="max-w-4xl mx-auto">
                 <div class="flex flex-col md:flex-row border-b-2 primary-border mb-6">
-                    <button class="tab-button flex-1 py-3 px-4 text-lg border-b-4 transition-all tab-active" data-tab="1">1. Activo Central</button>
-                    <button class="tab-button flex-1 py-3 px-4 text-lg border-b-4 transition-all tab-inactive" data-tab="2">2. El Puente Digital</button>
+                    <button class="tab-button flex-1 py-3 px-4 text-lg border-b-4 transition-all tab-active" data-tab="1">1. Actualización Web</button>
+                    <button class="tab-button flex-1 py-3 px-4 text-lg border-b-4 transition-all tab-inactive" data-tab="2">2. Landing de Venta</button>
                     <button class="tab-button flex-1 py-3 px-4 text-lg border-b-4 transition-all tab-inactive" data-tab="3">3. Motores de Tráfico</button>
                     <button class="tab-button flex-1 py-3 px-4 text-lg border-b-4 transition-all tab-inactive" data-tab="4">4. Influencia</button>
                 </div>
                 <div class="bg-white p-8 rounded-2xl shadow-lg">
                     <div id="tab-content-1" class="tab-content">
-                        <h3 class="text-2xl font-bold primary-color mb-4">Landing Page de Conversión</h3>
-                        <p class="text-lg secondary-text">Crearemos una página de destino para Ututuy que no es un folleto, es una máquina de ventas. Su único objetivo es educar sobre los beneficios clave y responder a la pregunta: "¿Dónde lo consigo?". El Call to Action principal no será "Comprar", sino "Encuéntralo en tu droguería más cercana", canalizando toda la demanda hacia sus distribuidores.</p>
+                        <h3 class="text-2xl font-bold primary-color mb-4">Evolución del Sitio Web Brandex</h3>
+                        <p class="text-lg secondary-text">Para soportar ventas directas, es crucial actualizar y evolucionar el sitio web actual de Brandex. Lo prepararemos para integrar funcionalidades de e-commerce, asegurando una experiencia de usuario fluida, segura y profesional que genere confianza y facilite la compra.</p>
                     </div>
                     <div id="tab-content-2" class="tab-content hidden">
-                        <h3 class="text-2xl font-bold primary-color mb-4">Localizador de Tiendas</h3>
-                        <p class="text-lg secondary-text">Este es el puente crucial entre el interés online y la compra offline. Al hacer clic en el CTA, el usuario verá un mapa o listado de las droguerías de Dfroma y Multidrogas. Cada búsqueda en esta herramienta es una intención de compra calificada que podemos medir y analizar para optimizar la estrategia.</p>
+                        <h3 class="text-2xl font-bold primary-color mb-4">Landing Page de Conversión E-commerce</h3>
+                        <p class="text-lg secondary-text">Crearemos una página de destino específica para Ututuy, diseñada como una máquina de ventas. El **Call to Action** será un claro y directo **"Comprar Ahora"**, guiando al cliente de manera intuitiva a través de un proceso de pago optimizado para minimizar la fricción y maximizar las conversiones.</p>
                     </div>
                     <div id="tab-content-3" class="tab-content hidden">
                         <h3 class="text-2xl font-bold primary-color mb-4">Google & Meta Ads</h3>
-                        <p class="text-lg secondary-text">Implementaremos una estrategia de doble motor. Con **Google Ads**, capturaremos la demanda existente de usuarios que ya buscan activamente soluciones de colágeno. Con **Meta Ads** (Instagram/Facebook), crearemos nueva demanda, mostrando los beneficios de Ututuy a audiencias hiper-segmentadas para generar un deseo de compra.</p>
+                        <p class="text-lg secondary-text">Implementaremos una estrategia de doble motor. Con **Google Ads**, capturaremos la demanda de usuarios que buscan activamente comprar colágeno. Con **Meta Ads** (Instagram/Facebook), crearemos deseo de compra en audiencias segmentadas, llevando tráfico calificado directamente a la landing page de venta.</p>
                     </div>
                     <div id="tab-content-4" class="tab-content hidden">
-                        <h3 class="text-2xl font-bold primary-color mb-4">Marketing de Influencia (Recomendado)</h3>
-                        <p class="text-lg secondary-text">Colaboraremos con micro-influenciadores auténticos en los nichos de salud y belleza. Su contenido generará prueba social y confianza a una escala que la publicidad tradicional no puede igualar. Esto posicionará a Ututuy como un producto recomendado por expertos y usuarios reales, acelerando la adopción.</p>
+                        <h3 class="text-2xl font-bold primary-color mb-4">Marketing de Influencia</h3>
+                        <p class="text-lg secondary-text">Colaboraremos con micro-influenciadores para generar contenido auténtico. Esto construye prueba social y confianza, posicionando a Ututuy como un producto recomendado y dirigiendo a sus seguidores directamente al botón de compra en la nueva landing page.</p>
                     </div>
                 </div>
             </div>
@@ -171,26 +171,30 @@
         <!-- La Alianza -->
         <section id="alianza" class="py-16 md:py-24">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-2">La Alianza de Crecimiento: Un Modelo Basado en el Éxito</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">La Alianza de Crecimiento: Inversión y Resultados</h2>
                  <p class="max-w-3xl mx-auto secondary-text">
-                Proponemos una verdadera alianza, no un contrato de servicios. Nuestro éxito está ligado al suyo. El modelo está diseñado para ser transparente, escalable y enfocado 100% en el crecimiento de sus ventas.
+                Nuestro modelo es transparente y se enfoca en el retorno. La inversión inicial sienta las bases para la infraestructura de ventas online, y nuestra compensación continua está ligada directamente a los resultados que generamos.
                 </p>
             </div>
             <div class="grid md:grid-cols-3 gap-4 md:gap-8 text-center">
                 <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border-t-4 accent-border">
                     <div class="text-3xl font-extrabold accent-color mb-4">Fase 1</div>
-                    <h3 class="text-xl font-bold mb-2">Mes 1: Fundación</h3>
-                    <p class="secondary-text">Setup y construcción de toda la maquinaria digital: Landing Page, Localizador de Tiendas y configuración de campañas. Una inversión inicial para construir los cimientos del crecimiento.</p>
+                    <h3 class="text-xl font-bold mb-2">Fundación E-commerce</h3>
+                    <p class="secondary-text">Una inversión única para construir su motor de ventas online:</p>
+                    <ul class="text-left mt-4 space-y-2">
+                       <li><b class="primary-color">Actualización Web Brandex:</b> $3.000.000</li>
+                       <li><b class="primary-color">Creación Landing Page de Venta:</b> $2.500.000</li>
+                    </ul>
                 </div>
                 <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border-t-4 accent-border">
                     <div class="text-3xl font-extrabold accent-color mb-4">Fase 2</div>
-                    <h3 class="text-xl font-bold mb-2">Meses 2-4: Piloto</h3>
-                    <p class="secondary-text">Lanzamiento y optimización con un <b class="primary-color">fee de gestión de $4.000.000 COP mensuales</b> + la inversión en medios. Recopilamos datos, probamos y refinamos las campañas.</p>
+                    <h3 class="text-xl font-bold mb-2">Piloto y Gestión</h3>
+                    <p class="secondary-text">Lanzamiento y optimización con un <b class="primary-color">fee de gestión de $4.000.000 COP mensuales</b> + la inversión en pauta publicitaria. Nos enfocamos en maximizar el retorno inicial.</p>
                 </div>
                 <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border-t-4 accent-border">
                     <div class="text-3xl font-extrabold accent-color mb-4">Fase 3</div>
-                    <h3 class="text-xl font-bold mb-2">Mes 5+: Escalamiento</h3>
-                    <p class="secondary-text">El modelo de alianza total. Activamos una <b class="primary-color">comisión por éxito del 5%</b> sobre la **venta incremental** generada, con un fee de gestión reducido.</p>
+                    <h3 class="text-xl font-bold mb-2">Escalamiento y Éxito</h3>
+                    <p class="secondary-text">El modelo de alianza total. Activamos una <b class="primary-color">comisión por éxito del 5%</b> sobre la **venta incremental digital** generada, con un fee de gestión reducido.</p>
                 </div>
             </div>
         </section>
@@ -198,9 +202,9 @@
         <!-- Proyecciones -->
         <section id="proyecciones" class="py-16 md:py-24">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-2">Visualizando el Crecimiento: La Venta Incremental</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-2">Visualizando el Crecimiento: La Venta Incremental Digital</h2>
                  <p class="max-w-3xl mx-auto secondary-text">
-                Nuestra métrica estrella es la "venta incremental": toda facturación que supere su línea base de ventas actual. Este gráfico ilustra cómo mediremos y construiremos sobre su éxito actual. Nuestro objetivo es hacer crecer la barra de "Venta Incremental" mes a mes.
+                Nuestra métrica estrella es la "venta incremental": toda facturación digital que supere su línea base de ventas online actual. Este gráfico ilustra cómo construiremos su nuevo canal de ingresos directos.
                 </p>
             </div>
             <div class="bg-white p-4 md:p-8 rounded-2xl shadow-lg">
@@ -215,13 +219,13 @@
             <div class="text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Siguientes Pasos</h2>
                 <p class="max-w-2xl mx-auto secondary-text mb-8">
-                Este modelo es audaz porque creemos en la calidad de su producto y en nuestra capacidad para generar demanda. Estamos listos para apostar por el crecimiento de Brandex.
+                Creemos firmemente en el potencial de Brandex para construir un canal de ventas digital robusto y rentable. Estamos listos para ser sus socios en este crecimiento.
                 </p>
                 <div class="bg-white max-w-2xl mx-auto p-8 rounded-xl shadow-md">
                      <p class="text-lg font-semibold mb-6">Proponemos una reunión de 30 minutos para:</p>
                      <ul class="text-left space-y-3 list-none">
-                        <li class="flex items-start"><span class="primary-color font-bold text-xl mr-3">✓</span>Definir la línea base de ventas de manera conjunta.</li>
-                        <li class="flex items-start"><span class="primary-color font-bold text-xl mr-3">✓</span>Discutir nuestra propuesta de inversión y comisión por éxito.</li>
+                        <li class="flex items-start"><span class="primary-color font-bold text-xl mr-3">✓</span>Presentar en detalle el plan de desarrollo web y de marketing.</li>
+                        <li class="flex items-start"><span class="primary-color font-bold text-xl mr-3">✓</span>Validar la estructura de costos y el modelo de alianza.</li>
                         <li class="flex items-start"><span class="primary-color font-bold text-xl mr-3">✓</span>Establecer un cronograma para el lanzamiento de la Fase 1.</li>
                      </ul>
                 </div>
@@ -309,13 +313,13 @@
                 data: {
                     labels: ['Mes 5', 'Mes 6', 'Mes 7', 'Mes 8', 'Mes 9', 'Mes 10'],
                     datasets: [{
-                        label: 'Línea Base de Ventas',
-                        data: [83, 83, 83, 83, 83, 83],
+                        label: 'Línea Base de Ventas Digitales',
+                        data: [5, 5, 5, 5, 5, 5],
                         backgroundColor: '#E2E8F0', // secondary-bg
                         borderColor: '#A0AEC0',
                         borderWidth: 1
                     }, {
-                        label: 'Venta Incremental (Proyectada)',
+                        label: 'Venta Incremental Digital (Proyectada)',
                         data: [15, 25, 40, 55, 70, 83],
                         backgroundColor: '#D95829', // accent-color
                         borderColor: '#C05621',
@@ -328,7 +332,7 @@
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Proyección de Ventas Mensuales (en Millones de COP)',
+                            text: 'Proyección de Ventas Digitales Mensuales (en Millones de COP)',
                             color: '#1A202C',
                             font: { size: 16 },
                             padding: { top: 10, bottom: 20 }
